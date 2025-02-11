@@ -1,0 +1,30 @@
+@font-face {
+  font-family: 'Exo';
+  font-style: normal;
+  font-weight: 200;
+  src: local('Exo ExtraLight'), local('Exo-ExtraLight'), url(../fonts/thin.woff) format('woff');
+}
+@font-face {
+  font-family: 'Exo';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Exo Regular'), local('Exo-Regular'), url(../fonts/normal.woff) format('woff');
+}
+@font-face {
+  font-family: 'Exo';
+  font-style: bold;
+  font-weight: 800;
+  src: local('Exo ExtraBold'), local('Exo-ExtraBold'), url(../fonts/bold.woff) format('woff');
+}
+@font-face {
+  font-family: 'Exo';
+  font-style: italic;
+  font-weight: 300;
+  src: local('Exo Light Italic'), local('Exo-LightItalic'), url(italic.woff) format('woff');
+}
+@font-face {
+  font-family: 'torque';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Exo Light Italic'), local('Exo-LightItalic'), url(../fonts/torque.ttf);
+}
