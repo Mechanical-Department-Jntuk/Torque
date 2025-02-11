@@ -191,8 +191,259 @@
           </div>
          
       </div>
+      <center>
+        <body>
+          
+        
+        <style>
+          /* Custom Styles */
+          .torque-workshop-section-title {
+              position: relative;
+              display: inline-block;
+          }
+          .torque-workshop-wrench-icon {
+              display: inline-block;
+              transition: transform 0.3s ease;
+          }
+          .torque-workshop-wrench-icon:hover {
+              transform: rotate(30deg);
+          }
+          .torque-workshop-wrench-icon:hover::after {
+              content: '';
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 10%, transparent 70%);
+              opacity: 0;
+              animation: torque-workshop-welding 1s ease-in-out;
+          }
+          @keyframes torque-workshop-welding {
+              0% { opacity: 1; transform: scale(0); }
+              100% { opacity: 0; transform: scale(2); }
+          }
+          .torque-workshop-carousel {
+              display: flex;
+              overflow: hidden;
+              width: 100%;
+              position: relative;
+              justify-content: center;
+          }
+          .torque-workshop-carousel-track {
+              display: flex;
+          }
+          @keyframes torque-workshop-conveyorBelt {
+              0% { transform: translateX(0); }
+              100% { transform: translateX(-50%); }
+          }
+          .torque-workshop-card {
+              position: relative;
+              width: 300px;
+              height: 400px;
+              margin: 0 20px;
+              perspective: 1000px;
+          }
+          .torque-workshop-card-inner {
+              position: relative;
+              width: 100%;
+              height: 100%;
+              transition: transform 0.8s;
+              transform-style: preserve-3d;
+          }
+          .torque-workshop-card:hover .torque-workshop-card-inner {
+              transform: rotateY(180deg);
+          }
+          .torque-workshop-card-front, .torque-workshop-card-back {
+              position: absolute;
+              width: 100%;
+              height: 100%;
+              backface-visibility: hidden;
+              border-radius: 10px;
+              overflow: hidden;
+              box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+          }
+          .torque-workshop-card-front {
+              background: #d7e6f5;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              text-align: center;
+              padding: 20px;
+          }
+          .torque-workshop-card-back {
+              background: #c2d4e5;
+              transform: rotateY(180deg);
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              text-align: center;
+              padding: 20px;
+          }
+          .torque-workshop-card img {
+              width: 100px;
+              height: 100px;
+              margin-bottom: 20px;
+          }
+          .torque-workshop-card h3 {
+              font-size: 1.5rem;
+              font-weight: bold;
+              margin-bottom: 10px;
+          }
+          .torque-workshop-card p {
+              font-size: 1rem;
+              margin-bottom: 20px;
+          }
+          .torque-workshop-register-button {
+              background: #ffa500;
+              color: white;
+              padding: 8px 16px;
+              border-radius: 20px;
+              font-weight: bold;
+          }
+          /* INLINED TAILWIND CSS (Minimal) */
+          .container {
+              width: 100%;
+              max-width: 1280px;
+              margin-left: auto;
+              margin-right: auto;
+          }
+          .mx-auto {
+              margin-left: auto;
+              margin-right: auto;
+          }
+          .px-4 {
+              padding-left: 1rem;
+              padding-right: 1rem;
+          }
+          .py-16 {
+              padding-top: 4rem;
+              padding-bottom: 4rem;
+          }
+          .text-4xl {
+              font-size: 2.25rem;
+              line-height: 2.5rem;
+          }
+          .font-bold {
+              font-weight: 700;
+          }
+          .text-center {
+              text-align: center;
+          }
+          .mb-12 {
+              margin-bottom: 3rem;
+          }
+          /* Default body styles */
+          body {
+              font-family: sans-serif;
+              color: #000;
+          }
+      </style>
+      <!-- Workshops Section -->
+      <section id="torque-2k25-workshops" class="container mx-auto px-4 py-16">
+          <!-- Section Title -->
+          <div id="about_us_heading">Workshops</div>
+          <!-- Carousel Slider -->
+          <div class="torque-workshop-carousel">
+              <div class="torque-workshop-carousel-track">
+                  <!-- Workshop Card 1 -->
+                  <div class="torque-workshop-card">
+                      <div class="torque-workshop-card-inner">
+                          <!-- Front Side -->
+                          <div class="torque-workshop-card-front">
+                              <img src="images/robotics.jpg" alt="Workshop 1">
+                              <h3>Robotics Workshop</h3>
+                              <p>Learn to build and program robots from scratch.</p>
+                          </div>
+                          <!-- Back Side -->
+                          <div class="torque-workshop-card-back">
+                              <h3>Details</h3>
+                              <p>Duration: 2 hours
+                                  <br>Materials: Provided
+                                  <br>Level: Beginner
+                              </p>
+                              <button class="torque-workshop-register-button">Register</button>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- Workshop Card 2 -->
+                  <div class="torque-workshop-card">
+                      <div class="torque-workshop-card-inner">
+                          <!-- Front Side -->
+                          <div class="torque-workshop-card-front">
+                              <img src="images/AI-ML.jpeg" alt="Workshop 2">
+                              <h3>AI & ML Workshop</h3>
+                              <p>Explore the world of Artificial Intelligence and Machine Learning.</p>
+                          </div>
+                          <!-- Back Side -->
+                          <div class="torque-workshop-card-back">
+                              <h3>Details</h3>
+                              <p>Duration: 3 hours
+                                  <br>Materials: Bring your laptop
+                                  <br>Level: Intermediate
+                              </p>
+                              <button class="torque-workshop-register-button">Register</button>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- Workshop Card 3 -->
+                  <div class="torque-workshop-card">
+                      <div class="torque-workshop-card-inner">
+                          <!-- Front Side -->
+                          <div class="torque-workshop-card-front">
+                              <img src="images/3d.jpg" alt="Workshop 3">
+                              <h3>3D Printing Workshop</h3>
+                              <p>Get hands-on experience with 3D printing technology.</p>
+                          </div>
+                          <!-- Back Side -->
+                          <div class="torque-workshop-card-back">
+                              <h3>Details</h3>
+                              <p>Duration: 2.5 hours
+                                  <br>Materials: Provided
+                                  <br>Level: Beginner
+                              </p>
+                              <button class="torque-workshop-register-button">Register</button>
+                          </div>
+                      </div>
+                  </div>
+                
+                        
+                      
+                  
+              </div>
+          </div>
+      </section>
+      <script>
+          // GSAP Animation for Card Fade-In
+          // Check if GSAP is already loaded
+          if (typeof gsap !== 'undefined') {
+              gsap.registerPlugin(ScrollTrigger);
+              // Renamed variables
+              var workshopCards = ".torque-workshop-card";
+              var carouselSection = ".torque-workshop-carousel";
+              gsap.from(workshopCards, {
+                  scrollTrigger: {
+                      trigger: carouselSection,
+                      start: "top 80%",
+                      end: "bottom 20%",
+                      toggleActions: "play none none none",
+                  },
+                  opacity: 0,
+                  y: 50,
+                  stagger: 0.2,
+                  duration: 1,
+                  ease: "power2.out",
+              });
+          } else {
+              console.warn("GSAP is not loaded.  Animations will not run.");
+          }
+      </script>
+  
+      </center>
       
-    
+    </body>
       <style>
         /* Google Fonts Import */
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
@@ -352,7 +603,7 @@
     </style>
 </head>
 <body>
-    <div id="about_us_heading">Events & Workshops</div>
+    <div id="about_us_heading">Events</div>
     
     <div class="container swiper">
         <div class="slider-wrapper">
@@ -425,6 +676,7 @@
         });
     </script>
   </center></center></div>
+  
   <div id="first_white_block">
     <center>
     <div id="about_us">
@@ -433,59 +685,33 @@
           <div class="slider">
             <div class="slide-track">
               <div class="slide">
-                <img class="logo-slide-img" src="https://cdn.freebiesupply.com/logos/thumbs/2x/mcdonalds-black-logo.png" alt="">
+                <img class="logo-slide-img" src="https://www.kakinadaseaports.co.in/images/Smartport.png" alt="">
               </div>
               <div class="slide">
-                <img class="logo-slide-img" src="https://cdn.freebiesupply.com/images/large/2x/starbucks-logo-black-and-white.png" alt="">
+                <img class="logo-slide-img" src="https://static.vecteezy.com/system/resources/previews/020/975/667/non_2x/sbi-logo-sbi-icon-transparent-free-png.png" alt="">
               </div>
               <div class="slide">
-                <img class="logo-slide-img" src="https://cdn.freebiesupply.com/logos/large/2x/general-electric-black-logo-png-transparent.png" alt="">
-              </div>
-              <div class="slide"> 
-                <img class="logo-slide-img" src="https://cdn.freebiesupply.com/logos/large/2x/nfl-logo-png-transparent.png" alt="">
+                <img class="logo-slide-img" src="https://logodix.com/logo/1686770.png" alt="">
               </div>
               <div class="slide">
-                <img class="logo-slide-img" src="https://cdn.freebiesupply.com/logos/large/2x/mercedes-benz-6-logo-png-transparent.png" alt="">
+                <img class="logo-slide-img" src="https://www.kakinadaseaports.co.in/images/Smartport.png" alt="">
               </div>
               <div class="slide">
-                <img class="logo-slide-img" src="https://cdn.freebiesupply.com/logos/large/2x/hogwarts-logo-png-transparent.png" alt="">
+                <img class="logo-slide-img" src="https://static.vecteezy.com/system/resources/previews/020/975/667/non_2x/sbi-logo-sbi-icon-transparent-free-png.png" alt="">
               </div>
               <div class="slide">
-                <img class="logo-slide-img" src="https://cdn.freebiesupply.com/logos/thumbs/2x/mcdonalds-black-logo.png" alt="">
+                <img class="logo-slide-img" src="https://logodix.com/logo/1686770.png" alt="">
               </div>
               <div class="slide">
-                <img class="logo-slide-img" src="https://cdn.freebiesupply.com/images/large/2x/starbucks-logo-black-and-white.png" alt="">
+                <img class="logo-slide-img" src="https://www.kakinadaseaports.co.in/images/Smartport.png" alt="">
               </div>
               <div class="slide">
-                <img class="logo-slide-img" src="https://cdn.freebiesupply.com/logos/large/2x/general-electric-black-logo-png-transparent.png" alt="">
+                <img class="logo-slide-img" src="https://static.vecteezy.com/system/resources/previews/020/975/667/non_2x/sbi-logo-sbi-icon-transparent-free-png.png" alt="">
               </div>
               <div class="slide">
-                <img class="logo-slide-img" src="https://cdn.freebiesupply.com/logos/large/2x/nfl-logo-png-transparent.png" alt="">
+                <img class="logo-slide-img" src="https://logodix.com/logo/1686770.png" alt="">
               </div>
-              <div class="slide">
-                <img class="logo-slide-img" src="https://cdn.freebiesupply.com/logos/large/2x/mercedes-benz-6-logo-png-transparent.png" alt="">
-              </div>
-              <div class="slide">
-                <img class="logo-slide-img" src="https://cdn.freebiesupply.com/logos/large/2x/hogwarts-logo-png-transparent.png" alt="">
-              </div>
-              <div class="slide">
-                <img class="logo-slide-img" src="https://cdn.freebiesupply.com/logos/thumbs/2x/mcdonalds-black-logo.png" alt="">
-              </div>
-              <div class="slide">
-                <img class="logo-slide-img" src="https://cdn.freebiesupply.com/images/large/2x/starbucks-logo-black-and-white.png" alt="">
-              </div>
-              <div class="slide">
-                <img class="logo-slide-img" src="https://cdn.freebiesupply.com/logos/large/2x/general-electric-black-logo-png-transparent.png" alt="">
-              </div>
-              <div class="slide">
-                <img class="logo-slide-img" src="https://cdn.freebiesupply.com/logos/large/2x/nfl-logo-png-transparent.png" alt="">
-              </div>
-              <div class="slide">
-                <img class="logo-slide-img" src="https://cdn.freebiesupply.com/logos/large/2x/mercedes-benz-6-logo-png-transparent.png" alt="">
-              </div>
-              <div class="slide">
-                <img class="logo-slide-img" src="https://cdn.freebiesupply.com/logos/large/2x/hogwarts-logo-png-transparent.png" alt="">
-              </div>
+              
             </div>
           </div>
 
@@ -499,8 +725,8 @@
         <div id="mz-gallery">
       
           <figure>
-            <img src="https://picsum.photos/id/818/700/700" alt="Statue of Liberty" width="700" height="700">
-            <figcaption>Statue of Liberty</figcaption>
+            <img src="https://tist.school/uploads/media/children-making-robot655e41900bdde.webp" alt="Statue of Liberty" width="700" height="700">
+            <figcaption>Torque</figcaption>
             <div></div>
             <div></div>
             <div></div>
@@ -508,8 +734,8 @@
           </figure>
       
           <figure>
-            <img src="https://picsum.photos/id/537/700/700" alt="Night Sky" width="700" height="700">
-            <figcaption>Night Sky</figcaption>
+            <img src="https://assets.skyfilabs.com/playto/blog-images/robotics-for-beginners-v3.webp" alt="Night Sky" width="700" height="700">
+            <figcaption>Torque</figcaption>
             <div></div>
             <div></div>
             <div></div>
@@ -517,8 +743,8 @@
           </figure>
       
           <figure>
-            <img src="https://picsum.photos/id/136/700/700" alt="Ravine Between Rocks" width="700" height="700">
-            <figcaption>Ravine Between Rocks</figcaption>
+            <img src="https://blog.spatial.com/hubfs/What%20Are%20Robotics%20and%20Automation-1.jpg" alt="Ravine Between Rocks" width="700" height="700">
+            <figcaption>Torque</figcaption>
             <div></div>
             <div></div>
             <div></div>
@@ -526,8 +752,8 @@
           </figure>
       
           <figure>
-            <img src="https://picsum.photos/id/337/700/700" alt="Wheat Farm" width="700" height="700">
-            <figcaption>Wheat Farm</figcaption>
+            <img src="https://www.dlr.de/en/rm/images/events/2024_explorerobotics/explore-robotics/@@images/image-2000-f14b588807be0f46bf29d6acfbe7ea14.jpeg" alt="Wheat Farm" width="700" height="700">
+            <figcaption>Torque</figcaption>
             <div></div>
             <div></div>
             <div></div>
@@ -535,8 +761,8 @@
           </figure>
       
           <figure>
-            <img src="https://picsum.photos/id/737/700/700" alt="City Street" width="700" height="700">
-            <figcaption>City Street</figcaption>
+            <img src="https://web-assets.bcg.com/8c/79/3fd21b749d4db7a4a8ce14968d66/advanced-robotics-2880x1620-tcm9-217016.jpg" alt="City Street" width="700" height="700">
+            <figcaption>Torque</figcaption>
             <div></div>
             <div></div>
             <div></div>
@@ -544,8 +770,8 @@
           </figure>
       
           <figure>
-            <img src="https://picsum.photos/id/217/700/700" alt="Crumbling Pier" width="700" height="700">
-            <figcaption>Crumbling Pier</figcaption>
+            <img src="https://biomech.stanford.edu/wp-content/uploads/3.9-Boston-dynamics.jpg" alt="Crumbling Pier" width="700" height="700">
+            <figcaption>Torque</figcaption>
             <div></div>
             <div></div>
             <div></div>
@@ -553,103 +779,15 @@
           </figure>
       
           <figure>
-            <img src="https://picsum.photos/id/416/700/700" alt="Foggy Mountains" width="700" height="700">
-            <figcaption>Foggy Mountains</figcaption>
+            <img src="https://engineering.case.edu/sites/default/files/styles/page_image/public/robot-mantis067.jpg?itok=_1I59H7T" alt="Foggy Mountains" width="700" height="700">
+            <figcaption>Torque</figcaption>
             <div></div>
             <div></div>
             <div></div>
             <div></div>
           </figure>
       
-          <figure>
-            <img src="https://picsum.photos/id/811/700/700" alt="Dense Forest" width="700" height="700">
-            <figcaption>Dense Forest</figcaption>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </figure>
-      
-          <figure>
-            <img src="https://picsum.photos/id/902/700/700" alt="Sunset Over Mountains" width="700" height="700">
-            <figcaption>Sunset Over Mountains</figcaption>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </figure>
-      
-          <figure>
-            <img src="https://picsum.photos/id/514/700/700" alt="SUV in Front of Building" width="700" height="700">
-            <figcaption>SUV in Front of Building</figcaption>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </figure>
-      
-          <figure>
-            <img src="https://picsum.photos/id/111/700/700" alt="Classic Vehicle" width="700" height="700">
-            <figcaption>Classic Vehicle</figcaption>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </figure>
-      
-          <figure>
-            <img src="https://picsum.photos/id/168/700/700" alt="Stacked Rocks" width="700" height="700">
-            <figcaption>Stacked Rocks</figcaption>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </figure>
-      
-          <figure>
-            <img src="https://picsum.photos/id/210/700/700" alt="Brick Wall" width="700" height="700">
-            <figcaption>Brick Wall</figcaption>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </figure>
-      
-          <figure>
-            <img src="https://picsum.photos/id/270/700/700" alt="Waterfront" width="700" height="700">
-            <figcaption>Waterfront</figcaption>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </figure>
-      
-          <figure>
-            <img src="https://picsum.photos/id/315/700/700" alt="Overgrown Buildings" width="700" height="700">
-            <figcaption>Overgrown Buildings</figcaption>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </figure>
-      
-          <figure>
-            <img src="https://picsum.photos/id/562/700/700" alt="Dying Trees" width="700" height="700">
-            <figcaption>Dying Trees</figcaption>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </figure>
-      
-          <figure>
-            <img src="https://picsum.photos/id/385/700/700" alt="Ocean View" width="700" height="700">
-            <figcaption>Ocean View</figcaption>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </figure>
+          
       
         </div>
       
@@ -662,8 +800,8 @@
     <div id="contact_us">
       <center>
         <div id="contact_us_heading">Contact Us</div>
-
-        <div class="contact_row" id="contact_row_1" style="width:440px;margin-top:50px;">
+      
+        <div class="contact_row" id="contact_row_1">
           <div class="contact_card" id="tas_card">
             <div class="contact_info">
               <span class="contact_name">Dr.K.Meera Saheb</span><br>
@@ -678,9 +816,12 @@
               <span class="contact_phone">phone no:</span>
             </div>
           </div>
+          <!-- ADDED CARD -->
+
+          <!-- END ADDED CARD -->
         </div>
         <br>
-        <div class="contact_row" id="contact_row_2" style="width:880px;">
+        <div class="contact_row" id="contact_row_2">
           <div class="contact_card" id="fadil_card">
             <div class="contact_info">
               <span class="contact_name">N.Nithin</span><br>
@@ -711,7 +852,7 @@
           </div>
         </div>
         <br>
-        <div class="contact_row" id="contact_row_3" style="width:880px;">
+        <div class="contact_row" id="contact_row_3">
           <div class="contact_card" id="sekhar_card">
             <div class="contact_info">
               <span class="contact_name">K.S.Nikhil</span><br>
@@ -723,6 +864,13 @@
             <div class="contact_info">
               <span class="contact_name">L.P.Viharika</span><br>
               <span class="contact_title">Student Coordinator</span><br>
+              <span class="contact_phone">phone no:</span>
+            </div>
+          </div>
+          <div class="contact_card" id="new_card">
+            <div class="contact_info">
+              <span class="contact_name">Surya Sunkara</span><br>
+              <span class="contact_title">New Title</span><br>
               <span class="contact_phone">phone no:</span>
             </div>
           </div>
@@ -742,6 +890,7 @@
           </div>
         </div>
       </center>
+      
   </div>
   <center>
       <div class="social_icons">
