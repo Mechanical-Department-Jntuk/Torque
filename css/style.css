@@ -185,35 +185,83 @@ background-color: #fff;
   height:700px;
   z-index: -1;
 }
-#contact_us{
-  color:#000;
+#contact_us {
+  color: #000;
   background-color: #fff;
   border-style: solid;
-  border-color: #000 ;
+  border-color: #000;
   border-width: 1px;
   margin-left: 0px;
   margin-top: 0px;
 }
 
-
-
-#contact_us_heading{
+#contact_us_heading {
   font-weight: 600;
   color: #cca400;
 }
-.contact_name{
+
+.contact_name {
   font-weight: 400;
   text-align: center;
 }
-.contact_title{
+
+.contact_title {
   font-weight: 200;
   text-align: center;
 }
-.contact_phone{
-  color:#cca400;
+
+.contact_phone {
+  color: #cca400;
   font-weight: 400;
   text-align: center;
 }
+
+.contact_row {
+  margin-top: 10px;
+  background-color: white;
+
+  /* Flexbox */
+  display: flex;
+  justify-content: center; /* Center cards horizontally */
+  align-items: center; /* Center cards vertically */
+  flex-wrap: wrap; /* Allow cards to wrap to the next line */
+  width: 880px; /* IMPORTANT: Set a max width for the row */
+}
+
+.contact_card {
+  margin: 10px;  /* Adjust margin as needed */
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-size: cover; /* Make the background image cover */
+  background-position: center; /* Center the background image */
+  flex-shrink: 0; /* Prevent cards from shrinking */
+  position: relative; /* Add this */
+}
+
+.contact_image {
+  /* The .contact_image div is now just a placeholder */
+  /* We don't need to style it directly anymore */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%; /* Make it a circle */
+  opacity: 0; /* Make it invisible */
+}
+
+.contact_info {
+  position: absolute; /* Changed to absolute */
+  bottom: 0;          /* Position at the bottom */
+  height: 80px;
+  background-color: white;
+  width: 100%;        /* Cover the full width */
+  opacity: 0.7;
+  text-align: center;  /* Center the text */
+}
+
+
 
 
 #topbar{
@@ -315,30 +363,6 @@ font-weight: 200;
   width: 80%;
   font-weight: 200;
   vertical-align: middle;
-}
-.contact_row{
-  left: 50%;
-  margin-top: 10px;
-  height: 200px;
-  background-color: white
-}
-.contact_card{
-  position: relative;
-  float: left;
-  margin: 0px 10px 0px 10px;
-  top:0px;
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  background-size: 100%;
-}
-.contact_info{
-  position: relative;
-  top: 120px;
-  height: 80px;
-  background-color: white;
-  width: 200px;
-  opacity: 0.7;
 }
 
 
