@@ -60,6 +60,15 @@ body{
   padding-bottom: 5px;
   display: inline-block;
 }
+#about_us_heading_gold {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #000000;
+  text-transform: uppercase;
+  border-bottom: 3px solid #cca400;
+  padding-bottom: 5px;
+  display: inline-block;
+}
 
 #about_us_matter {
   font-size: 1.2rem;
