@@ -921,3 +921,40 @@ border-width: 2px;
   100% {transform: translatex(-1000%)}
 }
 
+.main-title {
+  font-size: 40px; /* Set a consistent base size */
+  font-weight: bold;
+  text-align: center;
+  color: #ffffff;
+}
+
+.university-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.university-header .main-title {
+  font-size: 40px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.university-header .department-title {
+  font-size: 28px;
+  color: #dadada;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .university-header .main-title {
+      font-size: 22px;
+  }
+  
+  .university-header .department-title {
+      font-size: 18px;
+  }
+}
