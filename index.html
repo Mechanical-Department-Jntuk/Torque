@@ -444,282 +444,211 @@
       </center>
       
     </body>
-      <style>
-        /* Google Fonts Import */
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+     <style>
+      /* Google Fonts Import */
+      @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Roboto", sans-serif;
-        }
+      * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          font-family: "Roboto", sans-serif;
+      }
 
-        body {
-            background-color: #f4f4f4;
-            overflow-x: hidden;
-        }
+      body {
+          background-color: #121212;
+          overflow-x: hidden;
+      }
 
-        #about_us_heading {
-            text-align: center;
-            padding: 20px;
-            font-size: 24px;
-            font-weight: bold;
-            color: #333;
-        }
-        .card-list.swiper-wrapper {
-          height: 320px; /* Reduce from original height */
-          max-height: 320px; /* Alternative approach */
-        }
+      #about_us_heading {
+          text-align: center;
+          padding: 20px;
+          font-size: 24px;
+          font-weight: bold;
+          color: #ffffff;
+      }
 
+      .container {
+          width: 100%;
+          margin: 0 auto;
+          padding: 0 15px;
+          overflow-x: auto;
+      }
 
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
+      .slider-wrapper {
+          width: max-content;
+          position: relative;
+      }
 
-        .slider-wrapper {
-            width: 100%;
-            overflow: hidden;
-            position: relative;
-        }
+      .card-list {
+          display: flex;
+          gap: 15px;
+          padding: 20px 0;
+          flex-wrap: nowrap;
+      }
 
-        .card-list {
-            display: flex;
-            gap: 15px;
-            padding: 20px 0;
-        }
+      .card-item {
+          flex: 0 0 auto;
+          width: 250px;
+          height: 350px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          border-radius: 10px;
+          backdrop-filter: blur(30px);
+          background: rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          text-align: center;
+          padding: 20px;
+          transition: transform 0.3s ease;
+      }
 
-        .card-item {
-            flex: 0 0 auto;
-            width: 250px;
-            height: 350px; /* Reduced height */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            border-radius: 10px;
-            backdrop-filter: blur(30px);
-            background: rgba(255, 255, 255, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            text-align: center;
-            padding: 20px;
-            transition: transform 0.3s ease;
-        }
+      .card-item:hover {
+          transform: scale(1.05);
+          box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      }
 
-        .card-item:hover {
-            transform: scale(1.05);
-        }
+      .card-item .user-image {
+          width: 120px;
+          height: 120px;
+          border-radius: 50%;
+          object-fit: cover;
+          margin-bottom: 15px;
+          border: 3px solid #fe0457;
+      }
 
-        .card-item .user-image {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 15px;
-            border: 3px solid #fe0457;
-        }
+      .card-item .user-name {
+          font-size: 20px;
+          color: #ffffff;
+          margin-bottom: 10px;
+      }
 
-        .card-item .user-name {
-            font-size: 20px;
-            color: #ffffff;
-            margin-bottom: 10px;
-        }
+      .card-item .user-profession {
+          font-size: 14px;
+          color: #ffffff;
+          margin-bottom: 15px;
+      }
 
-        .card-item .user-profession {
-            font-size: 14px;
-            color: #ffffff;
-            margin-bottom: 15px;
-        }
+      .message-button {
+          font-size: 14px;
+          padding: 8px 25px;
+          color: #fff;
+          background: #fe0457;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: background 0.3s ease;
+      }
 
-        .message-button {
-            font-size: 14px;
-            padding: 8px 25px;
-            color: #fff;
-            background: #fe0457;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
+      .message-button:hover {
+          background: #d3034a;
+      }
 
-        .message-button:hover {
-            background: #d3034a;
-        }
+      /* Custom Scrollbar */
+      .container::-webkit-scrollbar {
+          height: 8px;
+          background: rgba(255,255,255,0.1);
+          border-radius: 10px;
+      }
 
+      .container::-webkit-scrollbar-thumb {
+          background: linear-gradient(45deg, #fe0457, #ff6b6b);
+          border-radius: 10px;
+      }
 
-        /* Responsive Breakpoints */
-        @media (max-width: 1200px) {
-            .card-item {
-                width: 220px;
-            }
-        }
+      .container::-webkit-scrollbar-thumb:hover {
+          background: linear-gradient(45deg, #ff6b6b, #fe0457);
+      }
 
-        @media (max-width: 992px) {
-            .card-item {
-                width: 200px;
-                height: 320px;
-            }
+      /* Responsive Breakpoints */
+      @media (max-width: 768px) {
+          .card-item {
+              width: 200px;
+              height: 300px;
+          }
 
-            .card-item .user-image {
-                width: 100px;
-                height: 100px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .card-item {
-                width: 180px;
-                height: 300px;
-            }
-
-            .card-item .user-name {
-                font-size: 18px;
-            }
-
-            .card-item .user-profession {
-                font-size: 12px;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .card-item {
-                width: 150px;
-                height: 280px;
-                padding: 15px;
-            }
-
-            .card-item .user-image {
-                width: 80px;
-                height: 80px;
-            }
-
-            .message-button {
-                font-size: 12px;
-                padding: 6px 15px;
-            }
-        }
-    </style>
+          .card-item .user-image {
+              width: 100px;
+              height: 100px;
+          }
+      }
+  </style>
 </head>
 <body>
-    <div id="about_us_heading">Events</div>
-    
-    <div class="container swiper">
-        <div class="slider-wrapper">
-            <div class="card-list swiper-wrapper">
-                <!-- Workshop Cards -->
-                <div class="card-item swiper-slide">
-                    <img src="images/expo.png" alt="Project Expo" class="user-image">
-                    <h2 class="user-name">Project Expo</h2>
-                    <p class="user-profession">Where innovation meets inspiration</p>
-                    <button class="message-button" onclick="window.location.href='https://mechanical-department-jntuk.github.io/subpages/event_projectexpo.html'">Know more</button>
+  <div id="about_us_heading">Events</div>
+  
+  <div class="container">
+      <div class="slider-wrapper">
+          <div class="card-list">
+              <!-- Workshop Cards -->
+              <div class="card-item">
+                <img src="images/expo.png" alt="Project Expo" class="user-image">
+                <h2 class="user-name">Project Expo</h2>
+                <p class="user-profession">Where innovation meets inspiration</p>
+                <button class="message-button" onclick="window.location.href='https://mechanical-department-jntuk.github.io/subpages/event_projectexpo.html'">Know more</button>
+              </div>
 
+              <div class="card-item">
+                <img src="images/bridge.jpg" alt="Brige Building" class="user-image">
+                <h2 class="user-name">Brige Building</h2>
+                <p class="user-profession"></p>
+                <button class="message-button" onclick="window.location.href='https://mechanical-department-jntuk.github.io/subpages/event_bridge.html'">Know more</button>
+              </div>
 
-                </div>
+              <div class="card-item">
+                <img src="images/lathe.jpg" alt="Lathe Master" class="user-image">
+                <h2 class="user-name">Lathe Master</h2>
+                <p class="user-profession"></p>
+                <button class="message-button" onclick="window.location.href='https://mechanical-department-jntuk.github.io/subpages/event_lathemaster.html'">Know more</button>
+              </div>
 
-                <div class="card-item swiper-slide">
-                    <img src="images/bridge.jpg" alt="Brige Building" class="user-image">
-                    <h2 class="user-name">Brige Building</h2>
-                    <p class="user-profession"></p>
-                    <button class="message-button" onclick="window.location.href='https://mechanical-department-jntuk.github.io/subpages/event_bridge.html'">Know more</button>
-                </div>
+              <div class="card-item">
+                <img src="images/race.jpg" alt="Robo Race" class="user-image">
+                <h2 class="user-name">Robo Race</h2>
+                <p class="user-profession"></p>
+                <button class="message-button" onclick="window.location.href='https://mechanical-department-jntuk.github.io/subpages/event_roborace.html'">Know more</button>
+              </div>
 
-                <div class="card-item swiper-slide">
-                    <img src="images/lathe.jpg" alt="Lathe Master" class="user-image">
-                    <h2 class="user-name">Lathe Master</h2>
-                    <p class="user-profession"></p>
-                    <button class="message-button" onclick="window.location.href='https://mechanical-department-jntuk.github.io/subpages/event_lathemaster.html'">Know more</button>
-                </div>
-
-                <div class="card-item swiper-slide">
-                    <img src="images/race.jpg" alt="Robo Race" class="user-image">
-                    <h2 class="user-name">Robo Race</h2>
-                    <p class="user-profession"></p>
-                    <button class="message-button" onclick="window.location.href='https://mechanical-department-jntuk.github.io/subpages/event_roborace.html'">Know more</button>
-                </div>
-
-                <div class="card-item swiper-slide">
-                    <img src="images/chess.jpeg" alt="Chess Monarchy" class="user-image">
-                    <h2 class="user-name">Chess Monarchy</h2>
-                    <p class="user-profession">Strategic Thinking Tournament</p>
-                    <button class="message-button" onclick="window.location.href='https://mechanical-department-jntuk.github.io/subpages/event_chessmonarch.html'">Know more</button>
-                </div>
-            </div>
-          
-               <div class="card-item swiper-slide">
-                    <img src="images/design.jpg" alt="Design Freak" class="user-image">
+              <div class="card-item">
+                <img src="images/chess.jpeg" alt="Chess Monarchy" class="user-image">
+                <h2 class="user-name">Chess Monarchy</h2>
+                <p class="user-profession">Strategic Thinking Tournament</p>
+                <button class="message-button" onclick="window.location.href='https://mechanical-department-jntuk.github.io/subpages/event_chessmonarch.html'">Know more</button>
+              </div>
+              <div class="card-item">
+                <img src="images/design.jpg" alt="Design Freak" class="user-image">
                     <h2 class="user-name">Design Freak</h2>
                     <p class="user-profession"></p>
                    <button class="message-button" onclick="window.location.href='https://mechanical-department-jntuk.github.io/subpages/event_designfreak.html'">Know more</button>
-                </div>
+              </div>
 
-                <div class="card-item swiper-slide">
-                    <img src="images/3d.jpg" alt="Mech-O-Mania" class="user-image">
-                    <h2 class="user-name">Mech-O-Mania</h2>
-                    <p class="user-profession"></p>
-                    <button class="message-button" onclick="window.location.href='https://mechanical-department-jntuk.github.io/subpages/event_mania.html'">Know more</button>
-                </div>
-
-
-                    <div class="card-item swiper-slide">
-                    <img src="images/3d.jpg" alt="Slide Plain" class="user-image">
+              <div class="card-item">
+                <img src="images/3d.jpg" alt="Slide Plain" class="user-image">
                     <h2 class="user-name">Slide Plain</h2>
                     <p class="user-profession"></p>
                     <button class="message-button">Know more</button>
-                </div>
 
-                      <div class="card-item swiper-slide">
-                    <img src="images/3d.jpg" alt="Casting Crown" class="user-image">
+              </div>
+              <div class="card-item">
+                <img src="images/3d.jpg" alt="Casting Crown" class="user-image">
                     <h2 class="user-name">Casting Crown</h2>
                     <p class="user-profession"></p>
                     <button class="message-button" onclick="window.location.href='https://mechanical-department-jntuk.github.io/subpages/event_castingcrowns.html'">Know more</button>
-                </div>
-
-                            <div class="card-item swiper-slide">
-                    <img src="images/3d.jpg" alt="Engine Montage" class="user-image">
+              </div>
+              <div class="card-item">
+                <img src="images/3d.jpg" alt="Engine Montage" class="user-image">
                     <h2 class="user-name">Engine Montage</h2>
                     <p class="user-profession"></p>
                     <button class="message-button" onclick="window.location.href='https://mechanical-department-jntuk.github.io/subpages/event_engine.html'">Know more</button>
-                </div>
-
-           <div class="card-item swiper-slide">
-                    <img src="images/3d.jpg" alt="Engine Montage" class="user-image">
-                    <h2 class="user-name">Engine Montage</h2>
-                    <p class="user-profession"></p>
-                    <button class="message-button" onclick="window.location.href='https://mechanical-department-jntuk.github.io/subpages/event_quiz.html'">Know more</button>
-                </div>
-          
-            <!-- Swiper Navigation and Pagination -->
-            <div class="swiper-pagination"></div>
-
-        </div>
-    </div>
-    
-    <!-- Swiper JS -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    
-    <script>
-        // Initialize Swiper
-        const swiper = new Swiper('.swiper', {
-            slidesPerView: 'auto',
-            spaceBetween: 15,
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev'
-            },
-            breakpoints: {
-                320: { slidesPerView: 1.2, spaceBetween: 10 },
-                480: { slidesPerView: 2.2, spaceBetween: 15 },
-                640: { slidesPerView: 3.2, spaceBetween: 20 },
-                1024: { slidesPerView: 4.2, spaceBetween: 25 }
-            }
-        });
-    </script>
+              </div>
+              
+              
+            </div>  
+          </div>
+      </div>
+  </div>
+</body>
   </center></center></div>
   
   <div id="first_white_block">
