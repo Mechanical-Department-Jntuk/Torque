@@ -161,11 +161,16 @@
       }
     }
 
-    // Set target date (example: 30 days from now)
-    const targetDate = new Date();
-    targetDate.setDate(targetDate.getDate() + 30);
+       // Set target date for March 15th
+const targetDate = new Date(2024, 2, 15, 0, 0, 0); // March 15, 2024, at midnight
 
-    const flipClock = new TimeFlipClock(targetDate);
+// Ensure the date is in the future
+if (targetDate <= new Date()) {
+  // If the date has passed, set it to next year
+  targetDate.setFullYear(targetDate.getFullYear() + 1);
+}
+
+const flipClock = new TimeFlipClock(targetDate);
   </script>
   <div id="background_container">
       <canvas id="background"></canvas>
