@@ -1,0 +1,1008 @@
+<html><head>
+<meta charset="utf-8">
+  <title>Torque</title>
+
+  <meta name="keywords" content="Torque, Torque '25, Torque 2K25, Torque Marketing, techsymposium">
+  <meta name="description" content="Marketing Website for torque '25, UCEK-Jawaharlal Nehry Technological University Kakinada">
+  <meta name="author" content="Leela Krishna, Ani Babu, Surya Sunkara, Torque '25'">
+  <link rel="icon" href="images/LOGO_ANIMATED_COMPRESSED.gif">
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/background.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <link href="css/thumbs2.css" rel="stylesheet">
+  <link href="css/thumbnail-slider.css" rel="stylesheet">
+  <script src="js/thumbnail-slider.js" type="text/javascript"></script>
+  <script src="js/jquery.js"></script>
+  <script src="js/positioning.js"></script>
+  <script src="js/scrollstuff.js"></script>
+</head>
+<body>
+  <style>
+    .time-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 50px;  /* Adjust value as needed */
+      position: relative;
+      top: 900px; 
+    }
+    .time-block {
+      text-align: center;
+      background-color: #f0f0f0;
+      padding: 10px;
+      border-radius: 10px;
+    }
+    .flip-card {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      perspective: 1000px;
+    }
+    .flip-card-front, 
+    .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 60px;
+      background-color: #000000;
+      color: white;
+    }
+    .flip-card-back {
+      transform: rotateY(180deg);
+    }
+    .flip-animation {
+      animation: flip 0.6s ease-in-out;
+    }
+    @keyframes flip {
+      0% { transform: rotateY(0deg); }
+      50% { transform: rotateY(90deg); }
+      100% { transform: rotateY(180deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="time-container">
+    <div class="time-block">
+      <div id="days" class="flip-card">
+        <div class="flip-card-front">00</div>
+        <div class="flip-card-back">00</div>
+      </div>
+      <label>Days</label>
+    </div>
+    <div class="time-block">
+      <div id="hours" class="flip-card">
+        <div class="flip-card-front">00</div>
+        <div class="flip-card-back">00</div>
+      </div>
+      <label>Hours</label>
+    </div>
+    <div class="time-block">
+      <div id="minutes" class="flip-card">
+        <div class="flip-card-front">00</div>
+        <div class="flip-card-back">00</div>
+      </div>
+      <label>Minutes</label>
+    </div>
+    <div class="time-block">
+      <div id="seconds" class="flip-card">
+        <div class="flip-card-front">00</div>
+        <div class="flip-card-back">00</div>
+      </div>
+      <label>Seconds</label>
+    </div>
+  </div>
+
+  <script>
+    class TimeFlipClock {
+      constructor(targetDate) {
+        this.targetDate = targetDate;
+        this.elements = {
+          days: document.getElementById('days'),
+          hours: document.getElementById('hours'),
+          minutes: document.getElementById('minutes'),
+          seconds: document.getElementById('seconds')
+        };
+        this.startCountdown();
+      }
+
+      padZero(number) {
+        return number.toString().padStart(2, '0');
+      }
+
+      updateFlipCard(element, newValue) {
+        const front = element.querySelector('.flip-card-front');
+        const back = element.querySelector('.flip-card-back');
+        
+        if (front.textContent !== newValue) {
+          back.textContent = newValue;
+          element.classList.add('flip-animation');
+          
+          setTimeout(() => {
+            front.textContent = newValue;
+            element.classList.remove('flip-animation');
+          }, 600);
+        }
+      }
+
+      calculateTimeRemaining() {
+        const now = new Date();
+        const difference = this.targetDate - now;
+
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((difference / (1000 * 60)) % 60);
+        const seconds = Math.floor((difference / 1000) % 60);
+
+        return { days, hours, minutes, seconds };
+      }
+
+      startCountdown() {
+        const updateTimer = () => {
+          const { days, hours, minutes, seconds } = this.calculateTimeRemaining();
+
+          this.updateFlipCard(this.elements.days, this.padZero(days));
+          this.updateFlipCard(this.elements.hours, this.padZero(hours));
+          this.updateFlipCard(this.elements.minutes, this.padZero(minutes));
+          this.updateFlipCard(this.elements.seconds, this.padZero(seconds));
+
+          if (days === 0 && hours === 0 && minutes === 0 && seconds === 0) {
+            clearInterval(this.timer);
+          }
+        };
+
+        updateTimer(); // Initial call
+        this.timer = setInterval(updateTimer, 1000);
+      }
+    }
+
+       // Set target date for March 15th
+const targetDate = new Date(2024, 2, 15, 0, 0, 0); // March 15, 2024, at midnight
+
+// Ensure the date is in the future
+if (targetDate <= new Date()) {
+  // If the date has passed, set it to next year
+  targetDate.setFullYear(targetDate.getFullYear() + 1);
+}
+
+const flipClock = new TimeFlipClock(targetDate);
+  </script>
+  <div id="background_container">
+      <canvas id="background"></canvas>
+  </div>
+  <div id="contents">
+    <div id="front_page">
+      <div class="university-header">
+        <div class="main-title">
+            Jawaharlal Nehru Technological University Kakinada
+        </div>
+        <div class="department-title">
+            Department of Mechanical Engineering,UCEK
+        </div>
+    </div>
+    
+    
+      <div id="torque_title"></div>
+      <img src="images/torque-logo.png" id="torque-logo">
+      <div class="main-title">
+        Torque 2025
+    </div>
+      <div id="torque_tagline">A moment to couple your innovations</div>
+     
+    </center></center></div>
+    <div id="first_white_block">
+      <center>
+      <div id="about_us">
+          <div id="about_us_heading_gold">About Us</div>
+          <div id="about_us_matter">
+                    <p>
+                      Torque is the flagship technical fest hosted by the Department of Mechanical Engineering at University College of Engineering Kakinada,JNTUK. It’s a celebration of innovation, creativity, and engineering excellence—a dynamic platform where some of the brightest minds come together to showcase their technical skills and problem-solving abilities.
+                    </p>
+                    <p>
+                      But Torque is more than just a technical symposium. It’s a vibrant celebration of the mechanical engineering community, designed to encourage collaboration, knowledge-sharing, and networking between students, faculty, and industry professionals. The event serves as a catalyst to ignite a passion for engineering, nurture emerging talent, and prepare the next generation of innovators to face the challenges of tomorrow.
+                    </p>
+          </div>
+         
+      </div>
+      <center>
+        <body>
+          
+        
+        <style>
+          /* Custom Styles */
+          .torque-workshop-section-title {
+              position: relative;
+              display: inline-block;
+          }
+          .torque-workshop-wrench-icon {
+              display: inline-block;
+              transition: transform 0.3s ease;
+          }
+          .torque-workshop-wrench-icon:hover {
+              transform: rotate(30deg);
+          }
+          .torque-workshop-wrench-icon:hover::after {
+              content: '';
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 10%, transparent 70%);
+              opacity: 0;
+              animation: torque-workshop-welding 1s ease-in-out;
+          }
+          @keyframes torque-workshop-welding {
+              0% { opacity: 1; transform: scale(0); }
+              100% { opacity: 0; transform: scale(2); }
+          }
+          .torque-workshop-carousel {
+              display: flex;
+              overflow: hidden;
+              width: 100%;
+              position: relative;
+              justify-content: center;
+          }
+          .torque-workshop-carousel-track {
+              display: flex;
+          }
+          @keyframes torque-workshop-conveyorBelt {
+              0% { transform: translateX(0); }
+              100% { transform: translateX(-50%); }
+          }
+          .torque-workshop-card {
+              position: relative;
+              width: 300px;
+              height: 400px;
+              margin: 0 20px;
+              perspective: 1000px;
+          }
+          .torque-workshop-card-inner {
+              position: relative;
+              width: 100%;
+              height: 100%;
+              transition: transform 0.8s;
+              transform-style: preserve-3d;
+          }
+          .torque-workshop-card:hover .torque-workshop-card-inner {
+              transform: rotateY(180deg);
+          }
+          .torque-workshop-card-front, .torque-workshop-card-back {
+              position: absolute;
+              width: 100%;
+              height: 100%;
+              backface-visibility: hidden;
+              border-radius: 10px;
+              overflow: hidden;
+              box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+          }
+          .torque-workshop-card-front {
+              background: #d7e6f5;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              text-align: center;
+              padding: 20px;
+          }
+          .torque-workshop-card-back {
+              background: #c2d4e5;
+              transform: rotateY(180deg);
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              text-align: center;
+              padding: 20px;
+          }
+          .torque-workshop-card img {
+              width: 100px;
+              height: 100px;
+              margin-bottom: 20px;
+              border-radius: 50%;
+          }
+          .torque-workshop-card h3 {
+              font-size: 1.5rem;
+              font-weight: bold;
+              margin-bottom: 10px;
+              border-radius: 50%;
+          }
+          .torque-workshop-card p {
+              font-size: 1rem;
+              margin-bottom: 20px;
+          }
+          .torque-workshop-register-button {
+              background: #ffa500;
+              color: white;
+              padding: 8px 16px;
+              border-radius: 20px;
+              font-weight: bold;
+          }
+          /* INLINED TAILWIND CSS (Minimal) */
+          .container {
+              width: 100%;
+              max-width: 1280px;
+              margin-left: auto;
+              margin-right: auto;
+          }
+          .mx-auto {
+              margin-left: auto;
+              margin-right: auto;
+          }
+          .px-4 {
+              padding-left: 1rem;
+              padding-right: 1rem;
+          }
+          .py-16 {
+              padding-top: 4rem;
+              padding-bottom: 4rem;
+          }
+          .text-4xl {
+              font-size: 2.25rem;
+              line-height: 2.5rem;
+          }
+          .font-bold {
+              font-weight: 700;
+          }
+          .text-center {
+              text-align: center;
+          }
+          .mb-12 {
+              margin-bottom: 3rem;
+          }
+          /* Default body styles */
+          body {
+              font-family: sans-serif;
+              color: #000;
+          }
+      </style>
+      <!-- Workshops Section -->
+      <section id="torque-2k25-workshops" class="container mx-auto px-4 py-16">
+          <!-- Section Title -->
+          <div id="about_us_heading">Workshops</div>
+          <!-- Carousel Slider -->
+          <div class="torque-workshop-carousel">
+              <div class="torque-workshop-carousel-track">
+                  <!-- Workshop Card 1 -->
+                  <div class="torque-workshop-card">
+                      <div class="torque-workshop-card-inner">
+                          <!-- Front Side -->
+                          <div class="torque-workshop-card-front">
+                              <img src="images/ndt.jpg" alt="Workshop 1">
+                              <h3>Non-Destructive Testing</h3>
+                              <p>Revealing the Hidden, Ensuring the future.</p>
+                          </div>
+                          <!-- Back Side -->
+                          <div class="torque-workshop-card-back">
+                              <h3>Details</h3>
+                              <p>Duration: 2 hours
+                                  <br>Materials: Provided
+                                  <br>Level: Beginner
+                              </p>
+                              <button class="message-button" onclick="window.location.href='https://mechanical-department-jntuk.github.io/subpages/workshop_ndt.html'">Know more</button>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- Workshop Card 2 -->
+                  <div class="torque-workshop-card">
+                      <div class="torque-workshop-card-inner">
+                          <!-- Front Side -->
+                          <div class="torque-workshop-card-front">
+                              <img src="images/images.jpg" alt="Workshop 2">
+                              <h3>VR Workshop</h3>
+                              <p>Immerse, Innovate, Inspire!</p>
+                          </div>
+                          <!-- Back Side -->
+                          <div class="torque-workshop-card-back">
+                              <h3>Details</h3>
+                              <p>Duration: 3 hours
+                                  <br>Materials: Bring your laptop
+                                  <br>Level: Intermediate
+                              </p>
+                             <button class="message-button" onclick="window.location.href='https://mechanical-department-jntuk.github.io/subpages/workshop_vr.html'">Know more</button>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- Workshop Card 3 -->
+                  <div class="torque-workshop-card">
+                      <div class="torque-workshop-card-inner">
+                          <!-- Front Side -->
+                          <div class="torque-workshop-card-front">
+                              <img src="images/hbahja.jpg" alt="Workshop 3">
+                              <h3>H Baja</h3>
+                              <p>need tagline asap</p>
+                          </div>
+                          <!-- Back Side -->
+                          <div class="torque-workshop-card-back">
+                              <h3>Details</h3>
+                              <p>Duration: 2.5 hours
+                                  <br>Materials: Provided
+                                  <br>Level: Beginner
+                              </p>
+                              <button class="message-button" onclick="window.location.href='https://mechanical-department-jntuk.github.io/subpages/workshop_hbaja.html'">Know more</button>
+                          </div>
+                      </div>
+                  </div>
+                
+                        
+                      
+                  
+              </div>
+          </div>
+      </section>
+      <script>
+          // GSAP Animation for Card Fade-In
+          // Check if GSAP is already loaded
+          if (typeof gsap !== 'undefined') {
+              gsap.registerPlugin(ScrollTrigger);
+              // Renamed variables
+              var workshopCards = ".torque-workshop-card";
+              var carouselSection = ".torque-workshop-carousel";
+              gsap.from(workshopCards, {
+                  scrollTrigger: {
+                      trigger: carouselSection,
+                      start: "top 80%",
+                      end: "bottom 20%",
+                      toggleActions: "play none none none",
+                  },
+                  opacity: 0,
+                  y: 50,
+                  stagger: 0.2,
+                  duration: 1,
+                  ease: "power2.out",
+              });
+          } else {
+              console.warn("GSAP is not loaded.  Animations will not run.");
+          }
+      </script>
+  
+      </center>
+      
+    </body>
+     <style>
+      /* Google Fonts Import */
+      @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+      * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          font-family: "Roboto", sans-serif;
+      }
+
+      body {
+          background-color: #121212;
+          overflow-x: hidden;
+      }
+
+      #about_us_heading {
+          text-align: center;
+          padding: 20px;
+          font-size: 24px;
+          font-weight: bold;
+          color: #ffffff;
+      }
+
+      .container {
+          width: 100%;
+          margin: 0 auto;
+          padding: 0 15px;
+          overflow-x: auto;
+      }
+
+      .slider-wrapper {
+          width: max-content;
+          position: relative;
+      }
+
+      .card-list {
+          display: flex;
+          gap: 15px;
+          padding: 20px 0;
+          flex-wrap: nowrap;
+      }
+
+      .card-item {
+          flex: 0 0 auto;
+          width: 250px;
+          height: 350px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          border-radius: 10px;
+          backdrop-filter: blur(30px);
+          background: rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          text-align: center;
+          padding: 20px;
+          transition: transform 0.3s ease;
+      }
+
+      .card-item:hover {
+          transform: scale(1.05);
+          box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      }
+
+      .card-item .user-image {
+          width: 120px;
+          height: 120px;
+          border-radius: 50%;
+          object-fit: cover;
+          margin-bottom: 15px;
+          border: 3px solid #73e1eb;
+      }
+
+      .card-item .user-name {
+          font-size: 20px;
+          color: #ffffff;
+          margin-bottom: 10px;
+      }
+
+      .card-item .user-profession {
+          font-size: 14px;
+          color: #ffffff;
+          margin-bottom: 15px;
+      }
+
+      .message-button {
+          font-size: 14px;
+          padding: 8px 25px;
+          color: #fff;
+          background: #fe0457;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: background 0.3s ease;
+      }
+
+      .message-button:hover {
+          background: #d3034a;
+      }
+
+      /* Custom Scrollbar */
+      .container::-webkit-scrollbar {
+          height: 8px;
+          background: rgba(255,255,255,0.1);
+          border-radius: 10px;
+      }
+
+      .container::-webkit-scrollbar-thumb {
+          background: linear-gradient(45deg, #fe0457, #ff6b6b);
+          border-radius: 10px;
+      }
+
+      .container::-webkit-scrollbar-thumb:hover {
+          background: linear-gradient(45deg, #ff6b6b, #fe0457);
+      }
+
+      /* Responsive Breakpoints */
+      @media (max-width: 768px) {
+          .card-item {
+              width: 200px;
+              height: 300px;
+          }
+
+          .card-item .user-image {
+              width: 100px;
+              height: 100px;
+          }
+      }
+  </style>
+</head>
+<body>
+  <div id="about_us_heading">Events</div>
+  
+  <div class="container">
+      <div class="slider-wrapper">
+          <div class="card-list">
+              <!-- Workshop Cards -->
+              <div class="card-item">
+                <img src="images/expo.png" alt="Project Expo" class="user-image">
+                <h2 class="user-name">Project Expo</h2>
+                <p class="user-profession">Where Innovation Meets Inspiration</p>
+                <button class="message-button" onclick="window.location.href='https://mechanical-department-jntuk.github.io/subpages/event_projectexpo.html'">Know more</button>
+              </div>
+
+              <div class="card-item">
+                <img src="images/bridge.jpg" alt="Brige Building" class="user-image">
+                <h2 class="user-name">Brige Building</h2>
+                <p class="user-profession">Where Engineering Meets Innovation</p>
+                <button class="message-button" onclick="window.location.href='https://mechanical-department-jntuk.github.io/subpages/event_bridge.html'">Know more</button>
+              </div>
+
+              <div class="card-item">
+                <img src="images/lathe.jpg" alt="Lathe Master" class="user-image">
+                <h2 class="user-name">Lathe Master</h2>
+                <p class="user-profession">Where Precision Meets Craftsmanship</p>
+                <button class="message-button" onclick="window.location.href='https://mechanical-department-jntuk.github.io/subpages/event_lathemaster.html'">Know more</button>
+              </div>
+
+              <div class="card-item">
+                <img src="images/race.jpg" alt="Robo Race" class="user-image">
+                <h2 class="user-name">Robo Race</h2>
+                <p class="user-profession">A High-Speed Innovation Challenge</p>
+                <button class="message-button" onclick="window.location.href='https://mechanical-department-jntuk.github.io/subpages/event_roborace.html'">Know more</button>
+              </div>
+
+              <div class="card-item">
+                <img src="images/chess.jpeg" alt="Chess Monarch" class="user-image">
+                <h2 class="user-name">Chess Monarch</h2>
+                <p class="user-profession">Where Strategy Meets Supremacy</p>
+                <button class="message-button" onclick="window.location.href='https://mechanical-department-jntuk.github.io/subpages/event_chessmonarch.html'">Know more</button>
+              </div>
+              <div class="card-item">
+                <img src="images/design.jpg" alt="Design Freak" class="user-image">
+                    <h2 class="user-name">Design Freak</h2>
+                    <p class="user-profession">Where Ideas Take Shape</p>
+                   <button class="message-button" onclick="window.location.href='https://mechanical-department-jntuk.github.io/subpages/event_designfreak.html'">Know more</button>
+              </div>
+
+              <div class="card-item">
+                <img src="images/slide.jpg" alt="Slide Plain" class="user-image">
+                    <h2 class="user-name">Slide Plain</h2>
+                    <p class="user-profession">Where Ideas Take Flight</p>
+                 <button class="message-button" onclick="window.location.href='https://mechanical-department-jntuk.github.io/subpages/event_slideplain.html'">Know more</button>
+
+              </div>
+              <div class="card-item">
+                <img src="images/casting.jpg" alt="Casting Crown" class="user-image">
+                    <h2 class="user-name">Casting Crown</h2>
+                    <p class="user-profession">Where precision and speed meet the art of sand casting</p>
+                    <button class="message-button" onclick="window.location.href='https://mechanical-department-jntuk.github.io/subpages/event_castingcrowns.html'">Know more</button>
+              </div>
+              <div class="card-item">
+                <img src="images/engine.jpg" alt="Engine Montage" class="user-image">
+                    <h2 class="user-name">Engine Montage</h2>
+                    <p class="user-profession">Where Mechanics Meets Precision</p>
+                    <button class="message-button" onclick="window.location.href='https://mechanical-department-jntuk.github.io/subpages/event_enginemontage.html'">Know more</button>
+              </div>
+             <div class="card-item">
+                <img src="images/quiz.jpg" alt="Quiz" class="user-image">
+                    <h2 class="user-name">Quiz</h2>
+                    <p class="user-profession">Where knowledge makes mechanical maestros</p>
+                    <button class="message-button" onclick="window.location.href='https://mechanical-department-jntuk.github.io/subpages/event_quiz.html'">Know more</button>
+              </div>
+                        <div class="card-item">
+                <img src="images/mania.jpg" alt="mania" class="user-image">
+                <h2 class="user-name">Mech-O-Mania</h2>
+                <p class="user-profession">Where Quick Thinking Meets Engineering Brilliance</p>
+                <button class="message-button" onclick="window.location.href='https://mechanical-department-jntuk.github.io/subpages/event_mania.html'">Know more</button>
+              </div>
+              
+            </div>  
+          </div>
+      </div>
+  </div>
+</body>
+  </center></center></div>
+  
+  <div id="first_white_block">
+    <center>
+    <div id="about_us">
+        <div id="about_us_heading_gold">Sponsors</div>
+        <div id="about_us_matter">
+          <div class="slider">
+            <div class="slide-track">
+              <div class="slide">
+                <img class="logo-slide-img" src="https://www.kakinadaseaports.co.in/images/Smartport.png" alt="">
+              </div>
+              <div class="slide">
+                <img class="logo-slide-img" src="https://static.vecteezy.com/system/resources/previews/020/975/667/non_2x/sbi-logo-sbi-icon-transparent-free-png.png" alt="">
+              </div>
+              <div class="slide">
+                <img class="logo-slide-img" src="https://logodix.com/logo/1686770.png" alt="">
+              </div>
+              <div class="slide">
+                <img class="logo-slide-img" src="https://www.kakinadaseaports.co.in/images/Smartport.png" alt="">
+              </div>
+              <div class="slide">
+                <img class="logo-slide-img" src="https://static.vecteezy.com/system/resources/previews/020/975/667/non_2x/sbi-logo-sbi-icon-transparent-free-png.png" alt="">
+              </div>
+              <div class="slide">
+                <img class="logo-slide-img" src="https://logodix.com/logo/1686770.png" alt="">
+              </div>
+              <div class="slide">
+                <img class="logo-slide-img" src="https://www.kakinadaseaports.co.in/images/Smartport.png" alt="">
+              </div>
+              <div class="slide">
+                <img class="logo-slide-img" src="https://static.vecteezy.com/system/resources/previews/020/975/667/non_2x/sbi-logo-sbi-icon-transparent-free-png.png" alt="">
+              </div>
+              <div class="slide">
+                <img class="logo-slide-img" src="https://logodix.com/logo/1686770.png" alt="">
+              </div>
+              
+            </div>
+          </div>
+
+        </div>
+       
+    </center>
+    <center>
+      <div id="about_us_heading">Gallery</div>
+      <div id="mz-gallery-container">
+
+        <div id="mz-gallery">
+      
+          <figure>
+            <img src="https://tist.school/uploads/media/children-making-robot655e41900bdde.webp" alt="Statue of Liberty" width="700" height="700">
+            <figcaption>Torque</figcaption>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </figure>
+      
+          <figure>
+            <img src="https://assets.skyfilabs.com/playto/blog-images/robotics-for-beginners-v3.webp" alt="Night Sky" width="700" height="700">
+            <figcaption>Torque</figcaption>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </figure>
+      
+          <figure>
+            <img src="https://blog.spatial.com/hubfs/What%20Are%20Robotics%20and%20Automation-1.jpg" alt="Ravine Between Rocks" width="700" height="700">
+            <figcaption>Torque</figcaption>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </figure>
+      
+          <figure>
+            <img src="https://www.dlr.de/en/rm/images/events/2024_explorerobotics/explore-robotics/@@images/image-2000-f14b588807be0f46bf29d6acfbe7ea14.jpeg" alt="Wheat Farm" width="700" height="700">
+            <figcaption>Torque</figcaption>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </figure>
+      
+          <figure>
+            <img src="https://web-assets.bcg.com/8c/79/3fd21b749d4db7a4a8ce14968d66/advanced-robotics-2880x1620-tcm9-217016.jpg" alt="City Street" width="700" height="700">
+            <figcaption>Torque</figcaption>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </figure>
+      
+          <figure>
+            <img src="https://biomech.stanford.edu/wp-content/uploads/3.9-Boston-dynamics.jpg" alt="Crumbling Pier" width="700" height="700">
+            <figcaption>Torque</figcaption>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </figure>
+      
+          <figure>
+            <img src="https://engineering.case.edu/sites/default/files/styles/page_image/public/robot-mantis067.jpg?itok=_1I59H7T" alt="Foggy Mountains" width="700" height="700">
+            <figcaption>Torque</figcaption>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </figure>
+      
+          
+      
+        </div>
+      
+      </div>
+
+
+         
+      </center>
+    </div>
+    <div id="contact_us">
+      <center>
+        <div id="contact_us_heading">Contact Us</div>
+      
+       <div class="contact_row" id="contact_row_1">
+  <div class="contact_card" id="tas_card">
+    <img src="images/meera.jpeg" alt="Dr.K.Meera Saheb" style="width:100px; height:100px; border-radius:50%; object-fit:cover;">
+    <div class="contact_info">
+      <span class="contact_name">Dr.K.Meera Saheb</span><br>
+      <span class="contact_title">Faculty Coordinator</span>
+    </div>
+  </div>
+  <div class="contact_card" id="iswarya_card">
+    <div class="contact_info">
+      <span class="contact_name">Dr.V.Jaya Prasad</span><br>
+      <span class="contact_title">Faculty Coordinator</span>
+    </div>
+  </div>
+</div>
+
+<div class="contact_row" id="contact_row_2">
+     <div class="contact_card" id="nithin_card">
+       <img src="images/nithin.png" alt="Narava Nithin" style="width:100px; height:100px; border-radius:50%; object-fit:cover;">
+    <div class="contact_info">
+      <span class="contact_name">N.Nithin (IV)</span><br>
+      <span class="contact_title">Student Coordinator</span><br>
+      <span class="contact_phone">9347801102</span>
+    </div>
+  </div>
+  <div class="contact_card" id="suriburi_card">
+    <img src="images/surya.png" alt="Surya Sunkara" style="width:100px; height:100px; border-radius:50%; object-fit:cover;">
+    <div class="contact_info">
+      <span class="contact_name">V.N.S Surya Sunkara (IV)</span><br>
+      <span class="contact_title">Technical Coordinator</span><br>
+      <span class="contact_phone">9959591436</span>
+    </div>
+  </div>
+
+  <div class="contact_card" id="harish_card">
+     <img src="images/harish.jpeg" alt="Harish" style="width:100px; height:100px; border-radius:50%; object-fit:cover;">
+    <div class="contact_info">
+      <span class="contact_name">B.Harish (IV)</span><br>
+      <span class="contact_title">Student Coordinator</span><br>
+      <span class="contact_phone">8143506067</span>
+    </div>
+  </div>
+</div>
+
+<div class="contact_row" id="contact_row_3">
+
+    <div class="contact_card" id="3lokya_card">
+        <img src="images/lokya.jpg" alt="P.Lakshmi Trilokya" style="width:100px; height:100px; border-radius:50%; object-fit:cover;">
+    <div class="contact_info">
+      <span class="contact_name">P.Lakshmi Trilokya (IV)</span><br>
+      <span class="contact_title">Student Coordinator</span>
+    </div>
+  </div>
+ 
+  <div class="contact_card" id="viharika_card">
+    <img src="images/viharika.jpg" alt="Padma Viharika" style="width:100px; height:100px; border-radius:50%; object-fit:cover;">
+    <div class="contact_info">
+      <span class="contact_name">L.Padma Viharika</span><br>
+      <span class="contact_title">Student Coordinator</span>
+    </div>
+  </div>
+
+  
+  <div class="contact_card" id="rama_card">
+      <img src="images/ram.jpg" alt="Sri Ram" style="width:100px; height:100px; border-radius:50%; object-fit:cover;">
+    <div class="contact_info">
+      <span class="contact_name">D.Sriram (IV)</span><br>
+      <span class="contact_title">Student Coordinator</span><br>
+      <span class="contact_phone">9701244959</span>
+    </div>
+  </div>
+   <div class="contact_card" id="nikhil_card">
+    <img src="images/nik.jpg" alt="K.Sai Nikhil" style="width:100px; height:100px; border-radius:50%; object-fit:cover;">
+    <div class="contact_info">
+      <span class="contact_name">K.Sai Nikhil (IV)</span><br>
+      <span class="contact_title">Student Coordinator</span><br>
+      <span class="contact_phone">9346682351</span>
+    </div>
+  </div>
+</div>
+        
+
+<div class="contact_row" id="contact_row_4">
+
+
+   <div class="contact_card" id="leela_card">
+    <img src="images/VEMULAPALLILEELAKRISHNA[1].png" alt="Leela Krishna" style="width:100px; height:100px; border-radius:50%; object-fit:cover;">
+    <div class="contact_info">
+      <span class="contact_name">Leela Krishna Vemulapalli (II)</span><br>
+      <span class="contact_title">Technical Coordinator</span><br>
+      <span class="contact_phone">9701978579</span>
+    </div>
+  </div>
+  <div class="contact_card" id="ani_card">
+    <img src="images/Ani.jpeg" alt="Ani Babu" style="width:100px; height:100px; border-radius:50%; object-fit:cover;">
+    <div class="contact_info">
+      <span class="contact_name">Ani Kakarlapudi (I)</span><br>
+      <span class="contact_title">Technical Coordinator</span><br>
+      <span class="contact_phone">7013362990</span>
+    </div>
+  </div>
+      </center>
+</div>
+  <center>
+      <div class="social_icons">
+                        <ul class="social-network social-circle">
+                            <li><a href="https://x.com/TORQUE_2K25?t=ILgS1XjD_ygM9mzeEA1mbQ&s=08" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="https://www.instagram.com/torque_2k25?igsh=MTdmNjFkZ2l6c2c4aw==" title="Instagram"><i class="fa fa-instagram"></i></a></li>
+                            <li><a href="https://youtube.com/@torque_jntuk?si=nWCpxwGJb8z7qSG6" class="icoYoutube" title="Youtube"><i class="fa fa-youtube-play"></i></a></li>
+                        </ul>
+      </div>
+      <span id="footer_info">For any other  contact us at <a>torque2k25@gmail.com</a></span>
+    </center>
+  </div>
+
+  <div id="topbar">
+    <span id="brochure_link_topbar"><a href="https://drive.google.com/file/d/1r6nnpEWYbZAv-OAzWIxUmJlAnnGexitZ/view?usp=sharing" id="brochure_link_topbar_link"> Download Poster</a></span><span id="the_nasty_pipe">|</span>
+    <div id="torque_topbar_holder"><img id="torque_topbar" src="images/torque-logo.png" onclick="take_me_to(1)"></div>
+
+  </div>
+<img id="menu_topbar" src="images/Menu.gif" onclick="show_menu()">
+
+  <div id="dimmer"></div>
+  <div id="sidebar" class="sidebar_out">
+      <img id="torque_sidebar" src="images/torque-logo.png" onclick="take_me_to(1)">
+      <div id="About_Us" onclick="take_me_to(2)">About Us</div><hr class="breaker_sidebar">
+      <div id="Gallery" onclick="take_me_to(3)">Gallery</div><hr class="breaker_sidebar">
+      <div id="Events" onclick="take_me_to(4)">Events</div><hr class="breaker_sidebar">
+      <div id="Contacts" onclick="take_me_to(7)">Contact Us</div><br>
+      <center>
+    <div id="Download_Brochure" onclick="take_me_to(8)">
+        <a href="https://drive.google.com/file/d/1r6nnpEWYbZAv-OAzWIxUmJlAnnGexitZ/view?usp=sharing" 
+           id="brochure_link_topbar_link" 
+           target="_blank">Download Poster</a>
+    </div>
+</center>
+
+  </div>
+  <div id="description_panel">
+    <div id="decription_content">
+      <div id="description_heading"></div>
+      <img id="description_image">
+      <div id="description_matter"></div>
+    </div>
+    <img src="images/back.png" id="back_button" onclick="close_description()">
+  </div>
+  <script src="js/background.js"></script>
+  <section id="location-section">
+    <div class="container">
+        <h2 style="margin-bottom: 0; margin-top: 0;">Department of Mechanical Engineering Location</h2>
+        <div class="location-content">
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d476.9877613625749!2d82.24030630358767!3d16.979365681533412!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a382841a29aaaab%3A0xd7b17072d88d1f32!2sDepartment%20Of%20Mechanical%20Engineering!5e0!3m2!1sen!2sin!4v1738430403388!5m2!1sen!2sin" 
+                    width="600" 
+                    height="450" 
+                    style="border:0;" 
+                    allowfullscreen 
+                    loading="lazy">
+                </iframe>
+            </div>
+            <div class="address-container">
+                <h3>Address:</h3>
+                <p><strong>Department of Mechanical Engineering</strong></p>
+                <p>University College of Enginnering Kakinada</p>
+                <p>Pithapuram Road</p>
+                <p>Kakinada,Andhra Pradesh,533003</p>
+                <p>India</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const heroSection = document.getElementById("front_page");
+    const menuButton = document.getElementById("menu_topbar");
+
+    function checkScroll() {
+      const heroBottom = heroSection.getBoundingClientRect().bottom;
+
+      if (heroBottom <= 0) {
+        // Hide the menu button when scrolled past the hero section
+        menuButton.style.display = "none";
+      } else {
+        // Show the menu button when hero section is in view
+        menuButton.style.display = "block";
+      }
+    }
+
+    window.addEventListener("scroll", checkScroll);
+  });
+</script>
+
+
+
+</body></html>
