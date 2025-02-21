@@ -218,236 +218,313 @@ const flipClock = new TimeFlipClock(targetDate);
         <body>
           
         
-        <style>
-          /* Custom Styles */
-          .torque-workshop-section-title {
-              position: relative;
-              display: inline-block;
-          }
-          .torque-workshop-wrench-icon {
-              display: inline-block;
-              transition: transform 0.3s ease;
-          }
-          .torque-workshop-wrench-icon:hover {
-              transform: rotate(30deg);
-          }
-          .torque-workshop-wrench-icon:hover::after {
-              content: '';
-              position: absolute;
-              top: 0;
-              left: 0;
-              width: 100%;
-              height: 100%;
-              background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 10%, transparent 70%);
-              opacity: 0;
-              animation: torque-workshop-welding 1s ease-in-out;
-          }
-          @keyframes torque-workshop-welding {
-              0% { opacity: 1; transform: scale(0); }
-              100% { opacity: 0; transform: scale(2); }
-          }
-          .torque-workshop-carousel {
-              display: flex;
-              overflow: hidden;
-              width: 100%;
-              position: relative;
-              justify-content: center;
-          }
-          .torque-workshop-carousel-track {
-              display: flex;
-          }
-          @keyframes torque-workshop-conveyorBelt {
-              0% { transform: translateX(0); }
-              100% { transform: translateX(-50%); }
-          }
-          .torque-workshop-card {
-              position: relative;
-              width: 300px;
-              height: 400px;
-              margin: 0 20px;
-              perspective: 1000px;
-          }
-          .torque-workshop-card-inner {
-              position: relative;
-              width: 100%;
-              height: 100%;
-              transition: transform 0.8s;
-              transform-style: preserve-3d;
-          }
-          .torque-workshop-card:hover .torque-workshop-card-inner {
-              transform: rotateY(180deg);
-          }
-          .torque-workshop-card-front, .torque-workshop-card-back {
-              position: absolute;
-              width: 100%;
-              height: 100%;
-              backface-visibility: hidden;
-              border-radius: 10px;
-              overflow: hidden;
-              box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-          }
-          .torque-workshop-card-front {
-              background: #d7e6f5;
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              justify-content: center;
-              text-align: center;
-              padding: 20px;
-          }
-          .torque-workshop-card-back {
-              background: #c2d4e5;
-              transform: rotateY(180deg);
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              justify-content: center;
-              text-align: center;
-              padding: 20px;
-          }
-          .torque-workshop-card img {
-              width: 100px;
-              height: 100px;
-              margin-bottom: 20px;
-              border-radius: 50%;
-          }
-          .torque-workshop-card h3 {
-              font-size: 1.5rem;
-              font-weight: bold;
-              margin-bottom: 10px;
-              border-radius: 50%;
-          }
-          .torque-workshop-card p {
-              font-size: 1rem;
-              margin-bottom: 20px;
-          }
-          .torque-workshop-register-button {
-              background: #ffa500;
-              color: white;
-              padding: 8px 16px;
-              border-radius: 20px;
-              font-weight: bold;
-          }
-          /* INLINED TAILWIND CSS (Minimal) */
-          .container {
-              width: 100%;
-              max-width: 1280px;
-              margin-left: auto;
-              margin-right: auto;
-          }
-          .mx-auto {
-              margin-left: auto;
-              margin-right: auto;
-          }
-          .px-4 {
-              padding-left: 1rem;
-              padding-right: 1rem;
-          }
-          .py-16 {
-              padding-top: 4rem;
-              padding-bottom: 4rem;
-          }
-          .text-4xl {
-              font-size: 2.25rem;
-              line-height: 2.5rem;
-          }
-          .font-bold {
-              font-weight: 700;
-          }
-          .text-center {
-              text-align: center;
-          }
-          .mb-12 {
-              margin-bottom: 3rem;
-          }
-          /* Default body styles */
-          body {
-              font-family: sans-serif;
-              color: #000;
-          }
-      </style>
-      <!-- Workshops Section -->
-      <section id="torque-2k25-workshops" class="container mx-auto px-4 py-16">
-          <!-- Section Title -->
-          <div id="about_us_heading">Workshops</div>
-          <!-- Carousel Slider -->
-          <div class="torque-workshop-carousel">
-              <div class="torque-workshop-carousel-track">
-                  <!-- Workshop Card 1 -->
-                  <div class="torque-workshop-card">
-                      <div class="torque-workshop-card-inner">
-                          <!-- Front Side -->
-                          <div class="torque-workshop-card-front">
-                              <img src="https://www.bisinfotech.com/wp-content/uploads/2024/08/element14-introduces-latest-innovation-from-Raspberry-Pi.png" alt="Workshop 1">
-                              <h3>Electric Vehicles🚗</h3>
-                              <p>Drive the Future!</p>
-                             <button class="message-button" onclick="window.location.href='https://mechanical-department-jntuk.github.io/subpages/workshop_ndt.html'">Know more</button>
-                       
-                            
-                             
-                          </div>
-                      </div>
-                  </div>
-                  <!-- Workshop Card 2 -->
-                  <div class="torque-workshop-card">
-                      <div class="torque-workshop-card-inner">
-                          <!-- Front Side -->
-                          <div class="torque-workshop-card-front">
-                              <img src="images/images.jpg" alt="Workshop 2">
-                              <h3>Virtual Reality🥽</h3>
-                              <p>Immerse, Innovate, Inspire!</p>
-                              <button class="message-button" onclick="window.location.href='https://mechanical-department-jntuk.github.io/subpages/workshop_vr.html'">Know more</button>
-                         
-                            
-                          </div>
-                      </div>
-                  </div>
-                  <!-- Workshop Card 3 -->
-                  <div class="torque-workshop-card">
-                      <div class="torque-workshop-card-inner">
-                          <!-- Front Side -->
-                          <div class="torque-workshop-card-front">
-                              <img src="https://www.tdk.com/en/tech-mag/sites/default/files/2024-08/robotics-in-manufactoring.jpg" alt="Workshop 3">
-                              <h3>Robotics🤖</h3>
-                              <p>Join the next Industrial Revolution!</p>
-                              <button class="message-button" onclick="window.location.href='https://mechanical-department-jntuk.github.io/subpages/workshop_hbaja.html'">Know more</button>
-                        
-                           
-                          </div>
-                      </div>
-                  </div>
-                
-                        
-                      
-                  
-              </div>
-          </div>
-      </section>
- <!--     <script>
-          // GSAP Animation for Card Fade-In
-          // Check if GSAP is already loaded
-          if (typeof gsap !== 'undefined') {
-              gsap.registerPlugin(ScrollTrigger);
-              // Renamed variables
-              var workshopCards = ".torque-workshop-card";
-              var carouselSection = ".torque-workshop-carousel";
-              gsap.from(workshopCards, {
-                  scrollTrigger: {
-                      trigger: carouselSection,
-                      start: "top 80%",
-                      end: "bottom 20%",
-                      toggleActions: "play none none none",
-                  },
-                  opacity: 0,
-                  y: 50,
-                  stagger: 0.2,
-                  duration: 1,
-                  ease: "power2.out",
-              });
-          } else {
-              console.warn("GSAP is not loaded.  Animations will not run.");
-          }
-      </script> -->
+      <style>
+    /* Section Title */
+    .torque-workshop-section-title {
+        position: relative;
+        display: inline-block;
+    }
+    
+    /* Carousel Container */
+    .torque-workshop-carousel {
+        display: flex;
+        overflow: hidden;
+        width: 100%;
+        position: relative;
+        justify-content: center;
+    }
+    
+    /* Carousel Track */
+    .torque-workshop-carousel-track {
+        display: flex;
+        width: max-content;
+        animation: torque-workshop-scroll 25s linear infinite;
+    }
+    
+    /* Pause animation on hover */
+    .torque-workshop-carousel-track:hover {
+        animation-play-state: paused;
+    }
+    
+    /* Keyframes for Infinite Scrolling - Improved calculation */
+    @keyframes torque-workshop-scroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(calc(-340px * 3)); } /* Card width (300px) + margins (20px*2) */
+    }
+    
+    /* Individual Cards */
+    .torque-workshop-card {
+        position: relative;
+        width: 300px;
+        height: 400px;
+        margin: 0 20px;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+    }
+    
+    .torque-workshop-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Card styling with darker overlay for better text contrast */
+    .workshop-ev-card {
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                    url('https://www.bisinfotech.com/wp-content/uploads/2024/08/element14-introduces-latest-innovation-from-Raspberry-Pi.png');
+        background-size: cover;
+        background-position: center;
+        background-blend-mode: overlay;
+    }
+    
+    .workshop-vr-card {
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                    url('https://cdn.mos.cms.futurecdn.net/2ApH8dMb4ySHPEy734ipn8.jpg');
+        background-size: cover;
+        background-position: center;
+        background-blend-mode: overlay;
+    }
+    
+    .workshop-robotics-card {
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                    url('https://www.tdk.com/en/tech-mag/sites/default/files/2024-08/robotics-in-manufactoring.jpg');
+        background-size: cover;
+        background-position: center;
+        background-blend-mode: overlay;
+    }
+    
+    /* Text container with semi-transparent background */
+    .card-text-container {
+        background-color: rgba(255, 255, 255, 0.85);
+        padding: 15px;
+        border-radius: 8px;
+        width: 90%;
+        margin-top: 10px;
+    }
+    
+    .torque-workshop-card img {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 20px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+    
+    .torque-workshop-card:hover img {
+        transform: scale(1.1);
+    }
+    
+    /* Text styling with improved visibility */
+    .torque-workshop-card h3 {
+        text-shadow: none;
+        margin-bottom: 10px;
+        color: #333;
+        font-weight: 700;
+        font-size: 1.2rem;
+    }
+    
+    .torque-workshop-card p {
+        margin-bottom: 25px;
+        color: #444;
+        font-weight: 500;
+    }
+    
+    .torque-workshop-card:hover h3 {
+        transform: scale(1.05);
+        color: #1a1a1a;
+    }
+    
+    .torque-workshop-card:hover p {
+        transform: scale(1.05);
+        color: #333;
+    }
+    
+    /* Button Styling */
+    .workshop-button {
+        background: #ffa500;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 25px;
+        font-weight: bold;
+        border: none;
+        cursor: pointer;
+        margin-top: auto;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .workshop-button:hover {
+        background: #ff8c00;
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+    
+    .workshop-button:active {
+        transform: translateY(1px);
+    }
+    
+    /* Container styles */
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .mx-auto {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .px-4 {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    .py-16 {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+    }
+    
+    .text-center {
+        text-align: center;
+    }
+    
+    .mb-12 {
+        margin-bottom: 3rem;
+    }
+    
+    /* Section heading */
+    #about_us_heading h2 {
+        display: inline-block;
+        position: relative;
+        color: #333;
+        font-size: 2.5rem;
+    }
+    
+    #about_us_heading h2:after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 3px;
+        bottom: -10px;
+        left: 0;
+        background-color: #ffa500;
+        transform: scaleX(0.7);
+    }
+    
+    #about_us_heading h2:hover {
+        transform: translateY(-5px);
+    }
+    
+    #about_us_heading h2:hover:after {
+        transform: scaleX(1);
+    }
+</style>
+
+<!-- Workshops Section -->
+<section id="torque-2k25-workshops" class="container mx-auto px-4 py-16">
+    <!-- Section Title -->
+    <div id="about_us_heading" class="text-center mb-12">
+        <h2>Workshops</h2>
+    </div>
+
+    <!-- Carousel Slider -->
+    <div class="torque-workshop-carousel">
+        <div class="torque-workshop-carousel-track">
+            <!-- Workshop Card 1 -->
+            <div class="torque-workshop-card workshop-ev-card">
+                <img src="https://www.bisinfotech.com/wp-content/uploads/2024/08/element14-introduces-latest-innovation-from-Raspberry-Pi.png" alt="Electric Vehicles Workshop">
+                <div class="card-text-container">
+                    <h3>Electric Vehicles🚗</h3>
+                    <p>Drive the Future!</p>
+                </div>
+                <button class="workshop-button" onclick="window.location.href='https://mechanical-department-jntuk.github.io/subpages/workshop_ndt.html'">Know More</button>
+            </div>
+            
+            <!-- Workshop Card 2 -->
+            <div class="torque-workshop-card workshop-vr-card">
+                <img src="https://cdn.mos.cms.futurecdn.net/2ApH8dMb4ySHPEy734ipn8.jpg" alt="Virtual Reality Workshop">
+                <div class="card-text-container">
+                    <h3>Virtual Reality🥽</h3>
+                    <p>Immerse, Innovate, Inspire!</p>
+                </div>
+                <button class="workshop-button" onclick="window.location.href='https://mechanical-department-jntuk.github.io/subpages/workshop_vr.html'">Know More</button>
+            </div>
+            
+            <!-- Workshop Card 3 -->
+            <div class="torque-workshop-card workshop-robotics-card">
+                <img src="https://www.tdk.com/en/tech-mag/sites/default/files/2024-08/robotics-in-manufactoring.jpg" alt="Robotics Workshop">
+                <div class="card-text-container">
+                    <h3>Robotics🤖</h3>
+                    <p>Join the next Industrial Revolution!</p>
+                </div>
+                <button class="workshop-button" onclick="window.location.href='https://mechanical-department-jntuk.github.io/subpages/workshop_hbaja.html'">Know More</button>
+            </div>
+            
+            <!-- Duplicate cards for infinite scroll effect -->
+            <!-- Workshop Card 1 (Clone) -->
+            <div class="torque-workshop-card workshop-ev-card">
+                <img src="https://www.bisinfotech.com/wp-content/uploads/2024/08/element14-introduces-latest-innovation-from-Raspberry-Pi.png" alt="Electric Vehicles Workshop">
+                <div class="card-text-container">
+                    <h3>Electric Vehicles🚗</h3>
+                    <p>Drive the Future!</p>
+                </div>
+                <button class="workshop-button" onclick="window.location.href='https://mechanical-department-jntuk.github.io/subpages/workshop_ndt.html'">Know More</button>
+            </div>
+            
+            <!-- Workshop Card 2 (Clone) -->
+            <div class="torque-workshop-card workshop-vr-card">
+                <img src="https://cdn.mos.cms.futurecdn.net/2ApH8dMb4ySHPEy734ipn8.jpg" alt="Virtual Reality Workshop">
+                <div class="card-text-container">
+                    <h3>Virtual Reality🥽</h3>
+                    <p>Immerse, Innovate, Inspire!</p>
+                </div>
+                <button class="workshop-button" onclick="window.location.href='https://mechanical-department-jntuk.github.io/subpages/workshop_vr.html'">Know More</button>
+            </div>
+            
+            <!-- Workshop Card 3 (Clone) -->
+            <div class="torque-workshop-card workshop-robotics-card">
+                <img src="https://www.tdk.com/en/tech-mag/sites/default/files/2024-08/robotics-in-manufactoring.jpg" alt="Robotics Workshop">
+                <div class="card-text-container">
+                    <h3>Robotics🤖</h3>
+                    <p>Join the next Industrial Revolution!</p>
+                </div>
+                <button class="workshop-button" onclick="window.location.href='https://mechanical-department-jntuk.github.io/subpages/workshop_hbaja.html'">Know More</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    // GSAP Animation for Card Fade-In
+    document.addEventListener('DOMContentLoaded', function() {
+        if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+            gsap.registerPlugin(ScrollTrigger);
+            gsap.from(".torque-workshop-card", {
+                scrollTrigger: {
+                    trigger: ".torque-workshop-carousel",
+                    start: "top 80%",
+                    end: "bottom 20%",
+                    toggleActions: "play none none none",
+                },
+                opacity: 0,
+                y: 50,
+                stagger: 0.2,
+                duration: 1,
+                ease: "power2.out",
+            });
+        } else {
+            console.warn("GSAP or ScrollTrigger is not loaded. Animations will not run.");
+        }
+    });
+</script>
   
       </center>
       
