@@ -218,7 +218,7 @@ const flipClock = new TimeFlipClock(targetDate);
         <body>
           
         
-      <style>
+    <style>
     /* Section Title */
     .torque-workshop-section-title {
         position: relative;
@@ -238,7 +238,7 @@ const flipClock = new TimeFlipClock(targetDate);
     .torque-workshop-carousel-track {
         display: flex;
         width: max-content;
-        animation: torque-workshop-scroll 25s linear infinite;
+        animation: torque-workshop-scroll 15s linear infinite; /* Reduced from 25s to 15s */
     }
     
     /* Pause animation on hover */
@@ -284,7 +284,7 @@ const flipClock = new TimeFlipClock(targetDate);
     
     .workshop-vr-card {
         background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-                    url('https://medium.com/@techrobot45/the-technology-behind-vr-a5ff39fdd5eb');
+                    url('https://cdn.mos.cms.futurecdn.net/2ApH8dMb4ySHPEy734ipn8.jpg');
         background-size: cover;
         background-position: center;
         background-blend-mode: overlay;
@@ -450,7 +450,7 @@ const flipClock = new TimeFlipClock(targetDate);
             
             <!-- Workshop Card 2 -->
             <div class="torque-workshop-card workshop-vr-card">
-                <img src="https://medium.com/@techrobot45/the-technology-behind-vr-a5ff39fdd5eb" alt="Virtual Reality Workshop">
+                <img src="https://cdn.mos.cms.futurecdn.net/2ApH8dMb4ySHPEy734ipn8.jpg" alt="Virtual Reality Workshop">
                 <div class="card-text-container">
                     <h3>Virtual Reality🥽</h3>
                     <p>Immerse, Innovate, Inspire!</p>
@@ -503,8 +503,19 @@ const flipClock = new TimeFlipClock(targetDate);
 </section>
 
 <script>
-    // GSAP Animation for Card Fade-In
+    // Reset animation when it completes to create a smoother loop
     document.addEventListener('DOMContentLoaded', function() {
+        const track = document.querySelector('.torque-workshop-carousel-track');
+        if (track) {
+            track.addEventListener('animationiteration', function() {
+                // Quick reset to create a seamless loop
+                this.style.animation = 'none';
+                this.offsetHeight; // Trigger reflow
+                this.style.animation = null;
+            });
+        }
+        
+        // GSAP Animation for Card Fade-In
         if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
             gsap.registerPlugin(ScrollTrigger);
             gsap.from(".torque-workshop-card", {
@@ -525,7 +536,6 @@ const flipClock = new TimeFlipClock(targetDate);
         }
     });
 </script>
-  
       </center>
       
     </body>
