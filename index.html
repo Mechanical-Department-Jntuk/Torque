@@ -206,45 +206,70 @@ const flipClock = new TimeFlipClock(targetDate);
         </p>
       </div>
     </div>
+  </center>
 
-   
    <style>
-    #thank_you_section {
+#thank_you_section {
   background-color: white;
   padding: 80px 20px;
-  text-align: center;
   font-family: 'Poppins', sans-serif;
   color: #333;
+  overflow: hidden;
+  position: relative;
 }
 
 #thank_you_section h2 {
   font-size: 36px;
-  color: #d4af37; /* Golden heading */
+  color: #d4af37;
   margin-bottom: 30px;
+  text-align: center;
 }
 
-#thank_you_section p {
+/* Marquee Container */
+.marquee-container {
+  white-space: nowrap;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Marquee Animation */
+.marquee-text {
+  display: inline-block;
+  padding-left: 100%;
+  animation: marquee 25s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.marquee-message {
+  display: inline-block;
+  margin-right: 100px;
   font-size: 18px;
-  line-height: 1.7;
-  max-width: 900px;
-  margin: 0 auto 20px;
+  color: #333;
 }
-
 </style>
-  <div id="thank_you_section">
+
+<div id="thank_you_section">
   <h2>TORQUE 2K25 – A Huge Success! 🎉</h2>
-  <p>
-    Thank you for making TORQUE 2K25 an event to remember!
-  </p>
-  <p>
-    Your energy, participation, and dedication turned this fest into a wonderful celebration of innovation, creativity, and teamwork.
-  </p>
-  <p>
-    We truly appreciate each one of you for being a part of it. See you next year with even more energy and innovation!
-  </p>
+
+  <div class="marquee-container">
+    <div class="marquee-text">
+      <span class="marquee-message">Thank you for making TORQUE 2K25 an event to remember! 🙌</span>
+      <span class="marquee-message">Your energy, participation, and dedication made it amazing. 💡</span>
+      <span class="marquee-message">We truly appreciate every one of you. ❤️</span>
+      <span class="marquee-message">See you next year with even more energy and innovation! 🚀</span>
+    </div>
+  </div>
 </div>
 
-  </center>
+
     <center>
 <body>
 
