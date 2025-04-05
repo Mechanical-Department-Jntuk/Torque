@@ -69,21 +69,32 @@
 </head>
 <body>
   <div class="time-container">
-  <div class="time-block">
-    <div class="flip-card">
-      <div class="flip-card-front">15</div>
-      <div class="flip-card-back">15</div>
+    <div class="time-block">
+      <div class="flip-card">
+        <div class="flip-card-front">15</div>
+        <div class="flip-card-back">15</div>
+      </div>
+      <label>March</label>
     </div>
-    <label>March</label>
-  </div>
-  <div class="time-block">
-    <div class="flip-card">
-      <div class="flip-card-front">16</div>
-      <div class="flip-card-back">16</div>
+
+    <div class="time-block">
+      <div class="flip-card">
+        <div class="flip-card-front">&</div>
+        <div class="flip-card-back">&</div>
+      </div>
+      <label></label> <!-- Empty label or you can use "&" -->
     </div>
-    <label>March</label>
+
+    <div class="time-block">
+      <div class="flip-card">
+        <div class="flip-card-front">16</div>
+        <div class="flip-card-back">16</div>
+      </div>
+      <label>March</label>
+    </div>
   </div>
-</div>
+</body>
+
   <script>
     class TimeFlipClock {
       constructor(targetDate) {
